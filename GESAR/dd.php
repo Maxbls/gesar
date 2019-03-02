@@ -4,30 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Электронный архив</title>
-    <style type="text/css">
-        .navbar {
-          background: -webkit-linear-gradient(45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
-        }
+    <!-- Стили -->
+      <style type="text/css">
+          .navbar {
+            background: -webkit-linear-gradient(45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
+          }
 
-        #foot {
-        background: -webkit-linear-gradient(-45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
-        }
+          #foot {
+          background: -webkit-linear-gradient(-45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
+          }
 
-        #h1{
-          color: #fff;
-          font-family: "Segoe UI",sans-serif;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/sl-1.2.6/datatables.min.css"/>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/sl-1.2.6/datatables.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/datatables.min.css"/>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/datatables.min.js"></script> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-ru_RU.js"> </script>
+          #h1{
+            color: #fff;
+            font-family: "Segoe UI",sans-serif;
+          }
+      </style>
+    <!-- Бэлэм скриптар -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/sl-1.2.6/datatables.min.css"/>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/sl-1.2.6/datatables.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-ru_RU.js"> </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-mb navbar-light bg-light">
