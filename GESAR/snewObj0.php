@@ -188,7 +188,7 @@ mysqli_close($conn);
               </div>
 
             <label>Исполнители</label>
-                  <select class="custom-select mb-3" id="ipnt" size=10 name="Ispolnitel[]" class="selectpicker" multiple data-live-search="true" required>
+                  <select class="custom-select mb-3" id="ipnt" size=10 name="Ispolnitel[]" multiple required>
                     <?php
                       while($row = mysqli_fetch_array($Isp))
                       {
