@@ -25,29 +25,41 @@ mysqli_close($conn);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-ru_RU.js"> </script>
     <title>Hello, world!</title>
     <style type="text/css">
-        body{
-          height: 100%;
-          background: radial-gradient(at top, #FEFFFF, #A7C3CC);
-        }
+          .navbar {
+            background: -webkit-linear-gradient(45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
+          }
+
+          #foot {
+          background: -webkit-linear-gradient(-45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
+          }
+
+          #h1{
+            color: #fff;
+            font-family: "Segoe UI",sans-serif;
+          }
     </style>
 </head>
 
 <body>
+      <nav class="navbar navbar-expand-mb navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="row">
 
-    <div class="text-center">
-        <img class="d-block mx-auto mb-4 mt-2" src="sprite/emb.png" alt="" width="144" height="180">
-        <h1>Электронный архив "ГазЭкспертСервис"</h1>
-    </div>
+              <div><img class="m-2" src="sprite/emb.png" alt="" width="80" height="100"></div>
+              <div class="m-2"><h1 class="m-3" id="h1">Электронный архив "ООО ГазЭкспертСервис"</h1></div>
 
-    <!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>-->
-    </div>
-
-    <div class="container">
+            </div>
+          </div>
+        </nav>
+    <br>
+    <div class="container" id="cont">
         <h3 class="mb-2 mt-4">Создания объекта архива</h3>
         <form action="NewObj.php" method="POST" enctype="multipart/form-data" id="forma">
 
@@ -188,7 +200,7 @@ mysqli_close($conn);
               </div>
 
             <label>Исполнители</label>
-                  <select class="custom-select mb-3" id="ipnt" size=10 name="Ispolnitel[]" class="selectpicker" multiple data-live-search="true" required>
+                  <select class="custom-select mb-3" id="ipnt" size=10 name="Ispolnitel[]" multiple required>
                     <?php
                       while($row = mysqli_fetch_array($Isp))
                       {
@@ -336,11 +348,15 @@ mysqli_close($conn);
 
     </div>
 
+    <footer class="p-3 text-muted text-center text-small" id="foot">
+      <p class="mb-1" id="h1">&copy; 2019 ГазЭкспертСервис</p>
+    </footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
