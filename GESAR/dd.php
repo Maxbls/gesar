@@ -9,7 +9,6 @@
           .navbar {
             background: -webkit-linear-gradient(45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
           }
-
           #foot {
           background: -webkit-linear-gradient(-45deg, #0a67a3 36%,#0a67a3 50%,#0a67a3 57%,#ffffff 100%);
           }
