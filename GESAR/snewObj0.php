@@ -17,6 +17,10 @@ $sql = "Select * from dog";
 $result = mysqli_query($conn, $sql);
 $Dog = $result;
 
+$sql = "Select * from exp";
+$result = mysqli_query($conn, $sql);
+$Exp = $result;
+
 mysqli_close($conn);
 ?>
 <!doctype html>
@@ -84,17 +88,22 @@ mysqli_close($conn);
 
             <label>Дата подписания заключения ЭПБ</label>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" name="Data_podp_zakl">
+                <input type="date" class="form-control" name="Data_podp_zakl" required>
             </div>
 
-            <label>Номер регистрации заключении ЭПБ в РТН</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="Nomer_reg_zakl">
-            </div>
-
-            <label>Дата регистрации заключения ЭПБ в РТН</label>
-            <div class="input-group mb-3">
-                <input type="date" class="form-control" name="Data_reg_zakl">
+            <div class="row">
+              <div class="col">
+                <label>Номер регистрации заключении ЭПБ в РТН</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="Nomer_reg_zakl">
+                </div>
+              </div>
+              <div class="col">
+                <label>Дата регистрации заключения ЭПБ в РТН</label>
+                <div class="input-group mb-3">
+                    <input type="date" class="form-control" name="Data_reg_zakl">
+                </div>
+              </div>
             </div>
 
             <label>Вывод заключения</label>
@@ -109,18 +118,15 @@ mysqli_close($conn);
 
             <label>Договор</label>
             <div class="input-group">
-                <select class="custom-select" id="sdog" name="id_dogovora">
-                  <option value="" disabled selected>Выбрать договор</option>
-                  <?php
-                    while($row = mysqli_fetch_array($Dog))
-                    {
-                      if ($row["vis"]==true)
+                <select class="selectpicker form-control" id="sdog" name="id_dogovora" data-live-search="true" multiple data-max-options="1">
+                  <option value="Данные отсутствуют">Данные отсутствуют</option>
+                    <?php
+                      while($row = mysqli_fetch_array($Dog))
                       {
-                        echo '<option value="'.$row["id"].'">'.$row["Organ"].' '.$row["Nomer_dog"].' '.$row["Data_dog"].' '.$row["Koment"].'</option>';
+                          echo '<option value="'.$row["id"].'">'.$row["Organ"].' '.$row["Nomer_dog"].' '.$row["Data_dog"].' '.$row["Koment"].'</option>';
                       }
-                    }
-                  ?>
-                    </select>
+                    ?>
+                  </select>
             </div>
             <small id="HelpBlock" class="mb-3 form-text text-muted">Выбрать договор или создать новый</small>
 
@@ -163,66 +169,125 @@ mysqli_close($conn);
                 </div>
             </div>
 
-            <label>Носитель</label>
-
-              <div class="input-group btn-group btn-group-toggle mb-3" data-toggle="buttons" onchange="izmtut()">
-
-                <label class="btn btn-primary active">
-                     <input type="radio" id="option1" name="radiobutton" value="electro" checked> Электронный
-                </label>
-
-                <label class="btn btn-primary">
-                     <input type="radio" id="option2" name="radiobutton"  value="paper"> Бумажный
-                </label>
-            </div>
-              <div class="col bg-white rounded">
-                <div class="input-group mb-3" id="electro">
-
-                    <div  class="input-group mt-3" id="divfile">
-                        <div class="input-group mb-3">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file1[]" id="fi1" multiple="multiple" onchange="addnfl(this)">
-                            <label class="custom-file-label" id="l1">Выберите файл(ы)</label>
-                          </div>
-                          <div class="input-group-append">
-                            <select class="custom-select" name="type_doc1" id="sl1">
-                                  <?php
-                                    while($row = mysqli_fetch_array($doc))
-                                    {
-                                      echo '<option selected value="'.$row["naim"].'">'.$row["naim"].'</option>';
-                                    }
-                                  ?>
-                            </select>
-                          </div>
-                          <div class="input-group-append">
-                            <button class="btn btn-danger" type="button" id="bf1" onclick="rf()">Удалить</button>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3" id="paper">
-                  <label class="mt-3">Комментарий</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control mb-3" id="ipt" placeholder="Комментарий" name="Nal_eltr_nos" required>
-                    </div>
-                </div>
+            <label>Эксперт</label>
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <select class="selectpicker form-control" name="Ispolnitel[]" size=10 multiple data-live-search="true" required>
+                      <?php
+                        while($row = mysqli_fetch_array($Exp))
+                        {
+                            echo '<option value="'.$row["exp"].'">'.$row["exp"].'</option>';
+                        }
+                      ?>
+                    </select>
+                  </div>
               </div>
+              <div class="col">
+                    <a class="btn btn-outline-info" data-toggle="collapse" href="#multiCollapseExp" role="button" aria-expanded="false" aria-controls="multiCollapseExp">Добавить эксперта</a>
+              </div>
+            </div>
+
+            <div><!-- Создания нового эксперта -->
+                <div class="col collapse multi-collapse" id="multiCollapseExp">
+                    <div class="card card-body">
+
+                      <label>Новый эксперт</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="exp">
+                      </div>
+
+                      <div class="input-group mb-3"> <!-- Кнопка загрузить -->
+                        <input type="button" id="Newexp" value="Сохранить" class="btn btn-primary">
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+
 
             <label>Исполнители</label>
-              <div class="mb-3">
-                <select class="selectpicker form-control" name="Ispolnitel[]" size=10 multiple data-live-search="true" required>
-                  <!-- <select class="selectpicker" id="ipnt" size=10  multiple data-live-search="true" required> -->
-                    <?php
-                      while($row = mysqli_fetch_array($Isp))
-                      {
-                        if ($row["vis"]==true)
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <select class="selectpicker form-control" name="Ispolnitel[]" size=10 multiple data-live-search="true" required>
+                      <?php
+                        while($row = mysqli_fetch_array($Isp))
                         {
-                          echo '<option value="'.$row["Ispolnitel"].'">'.$row["Ispolnitel"].'</option>';
+                            echo '<option value="'.$row["Ispolnitel"].'">'.$row["Ispolnitel"].'</option>';
                         }
-                      }
-                    ?>
-                  </select>
+                      ?>
+                    </select>
+                  </div>
+              </div>
+              <div class="col">
+                    <a class="btn btn-outline-info" data-toggle="collapse" href="#multiCollapseIsp" role="button" aria-expanded="false" aria-controls="multiCollapseIsp">Добавить эксперта</a>
+              </div>
+            </div>
+
+            <div><!-- Создания нового эксперта -->
+                <div class="col collapse multi-collapse" id="multiCollapseIsp">
+                    <div class="card card-body">
+
+                      <label>Новый исполнитель</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="isp">
+                      </div>
+
+                      <div class="input-group mb-3"> <!-- Кнопка загрузить -->
+                        <input type="button" id="Newisp" value="Сохранить" class="btn btn-primary">
+                      </div>
+
+                    </div>
                 </div>
+            </div>
+
+
+
+                <label>Носитель</label>
+
+                  <div class="input-group btn-group btn-group-toggle mb-3" data-toggle="buttons" onchange="izmtut()">
+
+                    <label class="btn btn-primary active">
+                         <input type="radio" id="option1" name="radiobutton" value="electro" checked> Электронный
+                    </label>
+
+                    <label class="btn btn-primary">
+                         <input type="radio" id="option2" name="radiobutton"  value="paper"> Бумажный
+                    </label>
+                </div>
+                  <div class="col bg-white rounded">
+                    <div class="input-group mb-3" id="electro">
+
+                        <div  class="input-group mt-3" id="divfile">
+                            <div class="input-group mb-3">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file1[]" id="fi1" multiple="multiple" onchange="addnfl(this)">
+                                <label class="custom-file-label" id="l1">Выберите файл(ы)</label>
+                              </div>
+                              <div class="input-group-append">
+                                <select class="custom-select" name="type_doc1" id="sl1">
+                                      <?php
+                                        while($row = mysqli_fetch_array($doc))
+                                        {
+                                          echo '<option selected value="'.$row["naim"].'">'.$row["naim"].'</option>';
+                                        }
+                                      ?>
+                                </select>
+                              </div>
+                              <div class="input-group-append">
+                                <button class="btn btn-danger" type="button" id="bf1" onclick="rf()">Удалить</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" id="paper">
+                      <label class="mt-3">Комментарий</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control mb-3" id="ipt" placeholder="Комментарий" name="Nal_eltr_nos" required>
+                        </div>
+                    </div>
+                  </div>
 
             <button type="submit" class="mb-3 btn btn-primary">Добавить в архив</button>
 
@@ -353,8 +418,7 @@ mysqli_close($conn);
                             $("#sl"+x).append($("#sl1").html());
                           }
 
-                          $('.selectpicker').selectpicker({});
-
+                          $('.selectpicker').selectpicker();
             </script>
 
         </form>

@@ -124,7 +124,7 @@ $result = mysqli_query($conn, $sql);
 
             return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
                 '<tr>'+
-                    '<td>Full name:</td>'+
+                    '<td>№:</td>'+
                     '<td>'+d.id+'</td>'+
                 '</tr>'+
                 '<tr>'+
@@ -297,9 +297,13 @@ $result = mysqli_query($conn, $sql);
                                 "title":    "Носитель"
                               }, //12
                               {
+                                "data": "Expert",
+                                "title":    "Эксперт"
+                              }, //13
+                              {
                                 "data": "Ispolnitel",
                                 "title":    "Исполнитель"
-                              } //13
+                              } //14
                             ],
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json",
